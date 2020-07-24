@@ -18,13 +18,13 @@ function transformadora(datos){
 				number -= q * romanos[key];
 				romano += key.repeat(q);
 			}
-			result.push(`${num[i]} es ${romano}\\\n`)
+			result.push(`\n ${num[i]} es ${romano}`)
 		}
 		else{
 			var keys_arabigos = Object.keys(arabigos)
 			str = num[i].toUpperCase()
 			if (!(str && regex_validador.test(str)))
-				result.push(`${num[i]} es false\\\n`)
+				result.push(`\n ${num[i]} : false`)
 			else{
 				var arabigo = 0
 				var value = 0
@@ -41,15 +41,24 @@ function transformadora(datos){
 						value = str.indexOf(key)
 					}
 				}
-				result.push(`${num[i]} es ${arabigo}\\\n`)
+				result.push(`\n ${num[i]} : ${arabigo}`)
 			}
 		}
 	}
 return result.reverse()
 }
 
-const fs = require('fs')
-const data = fs.readFileSync('datos2.md','utf8')
-console.log('Datos leidos')
-fs.writeFileSync("resultado.md", transformadora(data)); 
-console.log("File written successfully\n");
+// const fs = require('fs')
+// const data = fs.readFileSync('datos2.md','utf8')
+// console.log('Datos leidos')
+// fs.writeFileSync("resultado.md", transformadora(data)); 
+// console.log("File written successfully\n");
+
+
+// 'use strict';
+
+const fs = require('fs');
+let rawdata = fs.readFileSync('datos1.json','utf8');
+let info = JSON.parse(rawdata);
+console.log(info);
+fs.writeFileSync('resultado.json', transformadora(info));

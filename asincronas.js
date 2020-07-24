@@ -48,20 +48,33 @@ function transformadora(datos){
 return result.reverse()
 }
 
+// const fs = require('fs');
+// const { resolve } = require('path');
+// const { rejects } = require('assert');
+// const data = fs.readFile('datos2.md','utf8', (err,data) => {
+//     if(err){
+//         console.error(err)
+//     } else {
+//         fs.writeFileSync("resultado.md", transformadora(data))
+//         console.log("File written successfully\n")
+//     }
+// })
+// console.log('Leyendo Datos')
+
+
+// LeerFichero(__filename){
+//     return new Promise(resolve,reject)
+// }
+
+
+'use strict';
+
 const fs = require('fs');
-const { resolve } = require('path');
-const { rejects } = require('assert');
-const data = fs.readFile('datos2.md','utf8', (err,data) => {
-    if(err){
-        console.error(err)
-    } else {
-        fs.writeFileSync("resultado.md", transformadora(data))
-        console.log("File written successfully\n")
-    }
-})
-console.log('Leyendo Datos')
 
+fs.readFile('student.json', (err, data) => {
+    if (err) throw err;
+    let student = JSON.parse(data);
+    console.log(student);
+});
 
-LeerFichero(__filename){
-    return new Promise(resolve,reject)
-}
+console.log('This is after the read call');
