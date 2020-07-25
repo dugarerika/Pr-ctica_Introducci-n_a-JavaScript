@@ -24,17 +24,12 @@ function transformadora(datos){
 			var keys_arabigos = Object.keys(arabigos)
 			str = num[i].toUpperCase()
 			if (!(str && regex_validador.test(str)))
-				result.push(`\n ${num[i]} : false`)
+				console.log('false')
 			else{
 				var arabigo = 0
 				var value = 0
 				for(key of keys_arabigos){
-					// console.log("_______")
-					// console.log(str)
-					// console.log(key)
 					value = str.indexOf(key)
-					// console.log(value)
-					// console.log("*********")
 					while(value != -1){
 						arabigo += parseInt(arabigos[key])
 						str = str.replace(key,"")
@@ -48,17 +43,10 @@ function transformadora(datos){
 return result.reverse()
 }
 
-// const fs = require('fs')
-// const data = fs.readFileSync('datos2.md','utf8')
-// console.log('Datos leidos')
-// fs.writeFileSync("resultado.md", transformadora(data)); 
-// console.log("File written successfully\n");
-
-
-// 'use strict';
-
+'use strict';
 const fs = require('fs');
-let rawdata = fs.readFileSync('datos1.json','utf8');
-let info = JSON.parse(rawdata);
-console.log(info);
-fs.writeFileSync('resultado.json', transformadora(info));
+let data = fs.readFileSync('datos.json','utf8');
+console.log(data);
+console.log('Datos leidos')
+fs.writeFileSync('resultado_sincrono.json', transformadora(data));
+console.log("Archivo ese escribe exitosamente\n");

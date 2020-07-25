@@ -18,63 +18,45 @@ function transformadora(datos){
 				number -= q * romanos[key];
 				romano += key.repeat(q);
 			}
-			result.push(`${num[i]} es ${romano}\\\n`)
+			result.push(`\n ${num[i]} es ${romano}`)
 		}
 		else{
 			var keys_arabigos = Object.keys(arabigos)
 			str = num[i].toUpperCase()
 			if (!(str && regex_validador.test(str)))
-				result.push(`${num[i]} es false\\\n`)
+				result.push(`\n ${num[i]} : false`)
 			else{
 				var arabigo = 0
 				var value = 0
 				for(key of keys_arabigos){
-					// console.log("_______")
-					// console.log(str)
-					// console.log(key)
 					value = str.indexOf(key)
-					// console.log(value)
-					// console.log("*********")
 					while(value != -1){
 						arabigo += parseInt(arabigos[key])
 						str = str.replace(key,"")
 						value = str.indexOf(key)
 					}
 				}
-				result.push(`${num[i]} es ${arabigo}\\\n`)
+				result.push(`\n ${num[i]} : ${arabigo}`)
 			}
 		}
 	}
 return result.reverse()
 }
 
-// const fs = require('fs');
-// const { resolve } = require('path');
-// const { rejects } = require('assert');
-// const data = fs.readFile('datos2.md','utf8', (err,data) => {
-//     if(err){
-//         console.error(err)
-//     } else {
-//         fs.writeFileSync("resultado.md", transformadora(data))
-//         console.log("File written successfully\n")
-//     }
-// })
-// console.log('Leyendo Datos')
-
-
-// LeerFichero(__filename){
-//     return new Promise(resolve,reject)
-// }
-
-
-'use strict';
-
 const fs = require('fs');
-
-fs.readFile('student.json', (err, data) => {
-    if (err) throw err;
-    let student = JSON.parse(data);
-    console.log(student);
-});
-
-console.log('This is after the read call');
+const { resolve } = require('path');
+const { rejects } = require('assert');
+const data = fs.readFile('datos.json','utf8', (err,data) => {
+    if(err){
+        console.error(err)
+    } else {
+        fs.writeFile('resultado_asincronos.json', transformadora(data), (err) => {
+			if(err){
+				console.error(err)
+			console.log('Datos escritos en el archivo');
+			} 
+		})
+		console.log('Escribiendo datos')
+    }
+})
+console.log('Leyendo Datos')
