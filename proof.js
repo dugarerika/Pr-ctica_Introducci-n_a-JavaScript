@@ -8,8 +8,5 @@ function number_generator(i){
 }
 
 const fs = require('fs')
-// const data = fs.readFileSync('datos.md','utf8')
-// console.log(data)
-// console.log('Datos leidos')
-fs.writeFileSync("datos.md", number_generator(4000)); 
+fs.writeFileSync("datos.json", number_generator(4000)); 
 console.log("File written successfully\n"); 
