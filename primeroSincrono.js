@@ -3,7 +3,7 @@
 function transformadora(datos){
 	const romanos = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
 	const arabigos = { CM: 900, M: 1000, CD: 400, D: 500, XC: 90, C: 100, XL: 40, L: 50, IX: 9, X: 10, IV: 4, V: 5, I: 1};
-	const regex_validador = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/
+	const regexValidador = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/
 	var num = String(datos).split(',')
 	var i = num.length
 	var result = []
@@ -12,10 +12,10 @@ function transformadora(datos){
 	var key
 	while(i--){
 		if(+num[i]){
-			var keys_romanos = Object.keys(romanos)
+			var keysRomanos = Object.keys(romanos)
 			var romano = '';
 			number = num[i] 
-			for(key of keys_romanos){
+			for(key of keysRomanos){
 				var q = Math.floor(number/ romanos[key]);
 				number -= q * romanos[key];
 				romano += key.repeat(q);
@@ -23,18 +23,18 @@ function transformadora(datos){
 			result.push(`\n ${num[i]} es ${romano}`)
 		}
 		else{
-			var keys_arabigos = Object.keys(arabigos)
+			var keysArabigos = Object.keys(arabigos)
 			str = num[i].toUpperCase()
-			if (!(str && regex_validador.test(str)))
-				result.push(`\n ${num[i]} : false`)
+			if (!(str && regexValidador.test(str)))
+			result.push(`\n ${num[i]} : false`)
 			else{
 				var arabigo = 0
 				var value = 0
-				for(key of keys_arabigos){
+				for(key of keysArabigos){
 					value = str.indexOf(key)
 					while(value != -1){
 						arabigo += parseInt(arabigos[key])
-						str = str.replace(key,"")
+						str = str.replace(key,'')
 						value = str.indexOf(key)
 					}
 				}
@@ -45,20 +45,10 @@ function transformadora(datos){
 return result.reverse()
 }
 
+
 const fs = require('fs');
-const { resolve } = require('path');
-const { rejects } = require('assert');
-const data = fs.readFile('datos.json','utf8', (err,data) => {
-    if(err){
-        console.error(err)
-    } else {
-        fs.writeFile('resultado_asincronos.json', transformadora(data), (err) => {
-			if(err){
-				console.error(err)
-			console.log('Datos escritos en el archivo');
-			} 
-		})
-		console.log('Escribiendo datos')
-    }
-})
-console.log('Leyendo Datos')
+let data = fs.readFileSync('datos.json','utf8');
+console.log(data);
+console.log('Datos leidos');
+fs.writeFileSync('resultado_sincrono.json', transformadora(data));
+console.log('Archivo ese escribe exitosamente\n');
