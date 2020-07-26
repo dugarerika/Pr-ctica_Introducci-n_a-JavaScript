@@ -45,7 +45,7 @@ function transformadora (datos) {
 }
 
 const fs = require('fs')
-const data = fs.readFileSync('datos.json','utf8')
+const data = fs.readFileSync('datos.json', 'utf8')
 console.log(data)
 console.log('Datos leidos')
 fs.writeFileSync('resultado_sincrono.json', transformadora(data))

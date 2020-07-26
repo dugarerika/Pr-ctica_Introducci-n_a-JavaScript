@@ -5,17 +5,17 @@
 // - tréboles/clubs (C)
 // - diamantes/diamonds (D)
 
-let palos = ['Picas','Corazones','Treboles','Diamantes'];
+const palos = ['Picas', 'Corazones', 'Treboles', 'Diamantes']
 
-let valores = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'As'];
+const valores = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'As']
 
-class Carta{
-    constructor(palo, valor) {
-        this.palo = palo;
-        this.valor = valor;
-    }
+class Carta {
+  constructor (palo, valor) {
+    this.palo = palo
+    this.valor = valor
+  }
 
-    imprimircarta(){
+  imprimircarta(){
         console.log(`${this.valor} de ${this.palo}`);
     }
 }
