@@ -2,16 +2,16 @@ function transformadora(datos){
 	var romanos = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
 	var arabigos = { CM: 900, M: 1000, CD: 400, D: 500, XC: 90, C: 100, XL: 40, L: 50, IX: 9, X: 10, IV: 4, V: 5, I: 1};
 	var regex_validador = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/
-	var num = String(datos).split(",")
+	var num = String(datos).split(',')
 	var i = num.length
 	var result = []
 	var number = 0
-	var str = ""
+	var str = ''
 	var key
 	while(i--){
 		if(+num[i]){
 			var keys_romanos = Object.keys(romanos)
-			var romano = "";
+			var romano = '';
 			number = num[i] 
 			for(key of keys_romanos){
 				var q = Math.floor(number/ romanos[key]);

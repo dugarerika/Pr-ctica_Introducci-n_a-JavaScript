@@ -8,5 +8,5 @@ function number_generator(i){
 }
 
 const fs = require('fs')
-fs.writeFileSync("datos.json", number_generator(4000)); 
-console.log("File written successfully\n"); 
+fs.writeFileSync('datos.json', number_generator(4000)); 
+console.log('File written successfully\n'); 
