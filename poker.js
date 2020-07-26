@@ -15,41 +15,41 @@ class Carta {
     this.valor = valor
   }
 
-  imprimircarta(){
-        console.log(`${this.valor} de ${this.palo}`);
-    }
+  imprimircarta () {
+    console.log(`${this.valor} de ${this.palo}`)
+  }
 }
 
 // let carta = new Carta('Corazones',8);
 // carta.imprimircarta();
 
 class Baraja {
-    constructor(){
-        this.baraja = [];
-    }
+  constructor () {
+    this.baraja = []
+  }
 
-    crearBaraja(palos, valores){
-        for (let palo of palos ){
-            for(let valor of valores){
-                this.baraja.push(new Carta(palo, valor).imprimircarta());
-                // console.log(this.baraja);
-            }
-        }
-        return this.baraja;
+  crearBaraja (palos, valores) {
+    for (const palo of palos) {
+      for (const valor of valores) {
+        this.baraja.push(new Carta(palo, valor).imprimircarta())
+        // console.log(this.baraja);
+      }
     }
+    return this.baraja
+  }
 
-    repartir(){
-        let mano = [];
-        while(mano.length < 5){
-            mano.push(this.baraja.pop());
-        }
-        return mano;
+  repartir () {
+    const mano = []
+    while (mano.length < 5) {
+      mano.push(this.baraja.pop())
     }
+    return mano
+  }
 
-    barajar(){
-        let i;
-        let temporal;
-        let contador = this.baraja.length;
+  barajar () {
+        const i
+        const temporal
+        let contador = this.baraja.length
     }
 
 
