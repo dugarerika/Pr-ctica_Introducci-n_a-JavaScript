@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
 function transformadora(datos){
-	const romanos = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
-	const arabigos = { CM: 900, M: 1000, CD: 400, D: 500, XC: 90, C: 100, XL: 40, L: 50, IX: 9, X: 10, IV: 4, V: 5, I: 1};
+	const romanos = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1}
+	const arabigos = { CM: 900, M: 1000, CD: 400, D: 500, XC: 90, C: 100, XL: 40, L: 50, IX: 9, X: 10, IV: 4, V: 5, I: 1}
 	const regexValidador = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/
 	var num = String(datos).split(',')
 	var i = num.length
@@ -13,12 +13,12 @@ function transformadora(datos){
 	while(i--){
 		if(+num[i]){
 			var keysRomanos = Object.keys(romanos)
-			var romano = '';
+			var romano = ''
 			number = num[i] 
 			for(key of keysRomanos){
-				var q = Math.floor(number/ romanos[key]);
-				number -= q * romanos[key];
-				romano += key.repeat(q);
+				var q = Math.floor(number/ romanos[key])
+				number -= q * romanos[key]
+				romano += key.repeat(q)
 			}
 			result.push(`\n ${num[i]} es ${romano}`)
 		}
@@ -45,19 +45,19 @@ function transformadora(datos){
 return result.reverse()
 }
 
-const fs = require('fs');
+const fs = require('fs')
 const data = fs.readFile('datos.json','utf8', (err,data) => {
     if(err){
-        console.error(err);
+        console.error(err)
     } else {
-		console.log(data);
+		console.log(data)
         fs.writeFile('resultado_asincronos.json', transformadora(data), (err) => {
 			if(err){
-				console.error(err);
-			console.log('Datos escritos en el archivo');
+				console.error(err)
+			console.log('Datos escritos en el archivo')
 			} 
 		})
-		console.log('Escribiendo datos');
+		console.log('Escribiendo datos')
     }
 })
-console.log('Leyendo Datos');
+console.log('Leyendo Datos')
