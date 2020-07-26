@@ -1,0 +1,24 @@
+{
+  "name": "practica-introduccion-a-javascript",
+  "version": "1.0.0",
+  "description": "Practica de JavaScript",
+  "main": "asincronas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dugarerika/Practica-Introduccion-a-JavaScript.git"
+  },
+  "keywords": [
+    "JS",
+    "Node",
+    "Web"
+  ],
+  "author": "Erika Tavera Misas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dugarerika/Practica-Introduccion-a-JavaScript/issues"
+  },
+  "homepage": "https://github.com/dugarerika/Practica-Introduccion-a-JavaScript#readme"
+}
